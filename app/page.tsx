@@ -1,13 +1,21 @@
+'use client'
+
 import { HStack, Link as ChakraLink, Image as ChakraImage, Text, Icon, Button, VStack, Heading, Flex, CardRoot, CardBody, CardFooter } from "@chakra-ui/react";
 import NextLink from "next/link"
 import NextImage from "next/image"
 import { LuArrowRight, LuCar, LuClock, LuShield, LuSparkles, LuStar, LuStarHalf } from "react-icons/lu";
 import heroCar from "../public/assets/hero-car.jpeg"
 import { Tag } from "@/components/ui/tag";
-import { VscAccount } from "react-icons/vsc";
 import { Card } from "@/components/home/card";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  function handleNavigationToSchedule(){
+    router.push("/agendar");
+  }
+
   return (
     <>
       <HStack as="header" position="fixed" left={0} right={0} top={0} zIndex={50} bg="blackAlpha.800/90">
@@ -90,20 +98,21 @@ export default function Home() {
                 Agende online e garanta o brilho que seu carro merece
               </Text>
               <HStack colorPalette="yellow">
-                <Button rounded="lg" >
-                  <LuClock />
-                  Agendar agora
+                <Button rounded="lg" asChild>
+                  <a href="/agendar"><LuClock /> 
+                  Agendar agora</a>
+                
                   </Button>
 
-                <Button>Ver serviços
-                  <LuArrowRight />
+                <Button rounded="lg" asChild>
+                  <a href="#servicos"> Ver serviços <LuArrowRight /></a>
                 </Button>
               </HStack>
         </VStack>
       </VStack>
 
       
-      <VStack as="section" py="24" gap={16}>
+      <VStack id="services" as="section" py="24" gap={16}>
         <VStack gap={4}>
           <Heading as="h2" fontSize="4xl" fontWeight="bold">Nossos Serviços</Heading>
           <Text maxW="xl" fontSize="lg" textAlign="center">Oferecemos os melhores serviços de estética automotiva para manter seu veículo impecável</Text>
@@ -142,19 +151,20 @@ export default function Home() {
           </HStack>
 
             <Button colorPalette="yellow" rounded="lg">
-              Agendar Serviço 
+              <a href="/agendar">Agendar serviço</a>
+          
               <LuArrowRight/>
             </Button>
       </VStack>
     </VStack >
     
-    <VStack as="footer">
+    <VStack as="footer" borderTopWidth={1} py={12}>
       <ChakraLink colorPalette="yellow" alignItems="center" gap={2} asChild>
         <NextLink href="/">
           <Icon w={7} h={7}>
             <LuCar />
-            Autoshine
           </Icon>
+          <Text fontWeight="bold">Auto Shine</Text>
         </NextLink>
       </ChakraLink>
       <Text fontSize="sm">@ 2026 Autoshine Estetica Automotiva. Todos os direitos reservados.</Text>
