@@ -1,7 +1,7 @@
 'use client'
 import Footer from "@/components/Footer/footer";
 import Header from "@/components/Header/header";
-import { Button, Heading, VStack, Text, Steps, ButtonGroup, useSteps } from "@chakra-ui/react";
+import { Button, Heading, VStack, Text, Steps, ButtonGroup, useSteps, HStack } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { LuArrowLeft } from "react-icons/lu";
@@ -48,13 +48,11 @@ export default function Agendar() {
                             {step.description}
                         </Steps.Content>
                     ))}
-                    
-
-                    <ButtonGroup size="sm" variant="outline">
+                    <HStack w="100%" justify="end">
                         <Steps.NextTrigger asChild>
                             <Button>Next</Button>
                         </Steps.NextTrigger>
-                    </ButtonGroup>
+                    </HStack>   
                 </Steps.RootProvider>
             </VStack>
         </VStack>
